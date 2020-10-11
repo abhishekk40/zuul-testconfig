@@ -35,7 +35,6 @@
 
 
 - project:
-    name: abhishekk40/test2
     check:
       jobs:
         - noop
