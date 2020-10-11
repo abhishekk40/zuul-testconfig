@@ -1,8 +1,6 @@
 - pipeline:
     name: check
-    description: |
-      Newly opened pull requests enter this pipeline to receive an
-      initial verification ,jbj
+    post-review: true
     manager: independent
     trigger:
       github:
@@ -10,17 +8,39 @@
           action:
             - opened
             - changed
-            - reopened
         - event: pull_request
-          action: comment
-          comment: (?i)^\s*recheck\s*$
-    start:
-      github:
-        status: pending
-        comment: false
+          action:
+            - comment
+          comment:
+            - '^recheck.*$'
     success:
       github:
-        status: 'success'
+        comment: true
+        status: success
     failure:
       github:
-        status: 'failure'
+        comment: true
+        status: failure
+    merge-failure:
+      github:
+        comment: true
+        status: failure
+    start:
+      github:
+        comment: true
+        status: pending
+    disabled:
+      github:
+        comment: true
+
+
+- project:
+    name: abhishekk40/test
+    check:
+      jobs:
+        - noop
+
+- job:
+    name: base
+    parent: null
+    pre-run: base-playbook.yaml
