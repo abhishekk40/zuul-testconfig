@@ -4,7 +4,7 @@
       jobs: []
 
 - project:
-    name: abhishekk40/zuul-testconfig
+    name: zuul-testconfig
     check:
       jobs:
         - noop
