@@ -1,0 +1,10 @@
+- project:
+    name: ^.*$
+    check:
+      jobs: []
+
+- project:
+    name: zuul-testconfig
+    check:
+      jobs:
+        - noop
