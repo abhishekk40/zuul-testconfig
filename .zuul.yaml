@@ -34,7 +34,7 @@
         comment: true
 
 - project:
-    name: abhishekk40/zuul-test-1
+    name: abhishekk40/zuul-testconfig
     check:
       jobs:
         - noop
